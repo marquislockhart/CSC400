@@ -1,5 +1,6 @@
 {% extends "donos/base.html" %}
 {% block content %}
+    <h1>{{ drives.0.city }}, {{ drives.0.state }}</h1>
     {# display city and state filter buttons if user is logged in#}
     {% if user.is_authenticated %}
         <div>
@@ -15,7 +16,7 @@
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ drive.author }}</a> // <a class="mr-2" href="{% url 'donos-organization-view' drive.orgID.id %}">{{ drive.orgID }}</a>
+              <a class="mr-2" href="#">{{ drive.author }}</a> // <a class="mr-2" href="#">{{ drive.orgID }}</a>
               <small class="text-muted">{{ drive.start_date|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'drive-detail' drive.id %}">{{ drive.title }}</a></h2>
