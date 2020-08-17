@@ -38,10 +38,9 @@ class Organization(models.Model):
             output_size = (300, 300)
             logo.thumbnail(output_size)
             logo.save(self.logo.path)
-        if header.height > 300 or header.width > 300:
-            output_size = (300, 300)
-            header.thumbnail(output_size)
-            header.save(self.header.path)
+        if header.height > 350 or header.width > 1110:
+            new_header = header.resize((1110, 350), Image.ANTIALIAS)
+            new_header.save(self.header.path)
 
 
 class Category(models.Model):
@@ -90,12 +89,13 @@ class Drive(models.Model):
     def save(self, *args, **kwargs):
         super(Drive, self).save(*args, **kwargs)
 
-        img = Image.open(self.banner.path)
+        banner = Image.open(self.banner.path)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.banner.path)
+        if banner.height > 350 or banner.width > 1110:
+            new_banner = banner.resize((1110, 350), Image.ANTIALIAS)
+            new_banner.save(self.banner.path)
+
+
 
     # Check to see if the drive is expired
     @property

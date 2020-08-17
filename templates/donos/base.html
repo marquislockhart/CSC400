@@ -10,6 +10,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'donos/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'donos/drives.css' %}">
 
     <!-- Title -->
     {% if title %}
@@ -61,18 +62,14 @@
 
     <!-- Inheritance -->
     <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-            {% block content %}{% endblock %}
-        </div>
-      </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
     </main>
 
     <!-- For Bootstrap -->
